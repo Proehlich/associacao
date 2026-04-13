@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reclamações</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto relative">
+
+            <!-- --- VERSÃO DESKTOP (PC) --- -->
+            <div class="hidden md:flex items-center justify-between">
+                <!-- Esquerda: Título + Menu -->
+                <div class="flex items-center space-x-4">
+                    <h1 class="font-bold text-xl uppercase tracking-tighter">Reclamações</h1>
+                    <div id="menuAdminPC" class="hidden items-center space-x-2">
+                        <a href="motoboys.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👥Associados</a>
+                        <a href="admin-produtos.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">➕Produtos</a>
+                        <a href="admin-sac.html" class="bg-red-700 hover:bg-red-800 px-3 py-1 rounded text-sm font-semibold transition">📩Reclamações</a>
+                    </div>
+                    <a href="loja.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">🛒Loja</a>
+                    <a href="sac.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">💬SAC</a>
+                    <a href="perfil.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👤Perfil</a>
+                </div>
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-2">
+                    <a href="dashboard.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-4 py-1 rounded font-bold text-sm flex items-center gap-1 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        MURAL
+                    </a>
+                    <button onclick="logout()"
+                        class="bg-red-700 hover:bg-red-800 px-4 py-1 rounded text-sm font-black uppercase shadow-sm">Sair</button>
+                </div>
+            </div>
+
+            <!-- --- VERSÃO MOBILE (CELULAR) --- -->
+            <div class="flex md:hidden items-center justify-between">
+                <!-- Esquerda: Hambúrguer -->
+                <button id="btnMenu" class="p-2 bg-blue-700 rounded-lg focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Centro: H1 Centralizado -->
+                <h1 class="absolute left-1/2 -translate-x-1/2 font-bold text-lg uppercase tracking-tighter">Reclamações
+                </h1>
+
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-1">
+                    <a href="dashboard.html" class="bg-blue-800 p-2 rounded-lg"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg></a>
+                    <button onclick="logout()" class="bg-red-700 p-2 rounded-lg font-black text-xs">SAIR</button>
+                </div>
+            </div>
+
+            <!-- ABA DO MENU (GAVETA MOBILE) -->
+            <div id="linksNav"
+                class="hidden absolute top-[64px] left-1/2 -translate-x-1/2 w-[90%] bg-blue-600 p-5 shadow-2xl z-50 rounded-b-3xl border-x border-b border-blue-400 flex-col space-y-4 items-center">
+                <div id="menuAdminMobile" class="hidden flex-col space-y-3 w-full">
+                    <a href="motoboys.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">👥Associados</a>
+                    <a href="admin-produtos.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">➕Produtos</a>
+                    <a href="admin-sac.html" class="bg-red-700 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">📩Reclamações</a>
+                </div>
+                <a href="loja.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">🛒Loja</a>
+                <a href="sac.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">💬SAC</a>
+                <a href="perfil.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">👤Perfil</a>
+            </div>
+        </div>
+    </nav>
+    <main class="p-6 max-w-4xl mx-auto">
+        <div id="listaSac" class="space-y-4">
+            <!-- Mensagens aparecem aqui -->
+        </div>
+    </main>
+    <footer class="mt-12 border-t py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Associação de Motoboys - Sistema de Apoio ao Associado</p>
+        <div class="mt-2 space-x-4">
+            <a href="politicas.html" class="hover:text-blue-600 underline">Políticas de Privacidade</a>
+            <a href="termos.html" class="hover:text-blue-600 underline">Termos de Uso</a>
+            <span class="text-gray-300">|</span>
+            <span class="font-bold text-blue-500">Status: Mensalidade em dia</span>
+        </div>
+    </footer>
+    <script>
+        // 1. SEGURANÇA: Lê o Token e valida se é Admin
+        const token = localStorage.getItem('token');
+
+        // Se não tiver token, volta para o login
+        if (!token) {
+            window.location.href = 'index.html';
+        }
+
+        const payload = JSON.parse(atob(token.split('.')[1]));
+
+        // Bloqueio extra: Se não for admin, chuta para o dashboard
+        if (payload.tipo !== 'admin') {
+            alert("Acesso restrito à diretoria!");
+            window.location.href = 'dashboard.html';
+        } else {
+            // Se for admin, libera os botões da barra azul
+            const menuAdmin = document.getElementById('menuAdmin');
+            if (menuAdmin) {
+                menuAdmin.classList.remove('hidden');
+                menuAdmin.classList.add('flex');
+            }
+        }
+
+        // 2. CARREGAR AS MENSAGENS DO BANCO
+        async function carregarMensagens() {
+            try {
+                const res = await fetch('/api/suporte');
+                const mensagens = await res.json();
+                const lista = document.getElementById('listaSac');
+
+                if (mensagens.length === 0) {
+                    lista.innerHTML = '<p class="text-gray-500 text-center">Nenhuma mensagem recebida.</p>';
+                    return;
+                }
+
+                // Dentro do seu carregarMensagens() no admin-sac.html
+                lista.innerHTML = mensagens.map(msg => `
+    <div class="bg-white p-5 rounded-lg shadow border-l-4 ${msg.visto_por ? 'border-gray-300 opacity-60' : 'border-red-500'} mb-4">
+        <div class="flex justify-between items-start">
+            <div>
+                <!-- NOME DE QUEM RECLAMOU EM DESTAQUE -->
+                <span class="text-xs font-bold text-gray-400 uppercase tracking-widest">Remetente:</span>
+                <h3 class="font-black text-lg text-blue-900 flex items-center gap-2">
+                    👤 ${msg.usuario_nome}
+                </h3>
+            </div>
+            <span class="text-xs text-gray-400 bg-gray-100 px-2 py-1 rounded">${new Date(msg.createdAt).toLocaleString()}</span>
+        </div>
+        
+        <div class="bg-gray-50 p-3 rounded mt-3 border-l-2 border-gray-200">
+            <p class="text-gray-700 italic">"${msg.mensagem}"</p>
+        </div>
+        
+        <div class="mt-4 pt-3 border-t flex justify-between items-center">
+            <span class="text-sm font-bold ${msg.visto_por ? 'text-green-600' : 'text-red-600'}">
+                ${msg.visto_por ? `✅ Resolvido por: ${msg.visto_por}` : '⚠️ Aguardando Atenção'}
+            </span>
+            ${!msg.visto_por ? `<button onclick="marcarVisto(${msg.id})" class="bg-blue-600 text-white px-4 py-1 rounded text-xs font-bold hover:bg-blue-700 transition shadow-md">Marcar como Visto</button>` : ''}
+        </div>
+    </div>
+`).join('');
+
+            } catch (e) {
+                console.error("Erro ao carregar mensagens:", e);
+            }
+        }
+
+        // 3. FUNÇÃO PARA MARCAR COMO VISTO
+        async function marcarVisto(id) {
+            try {
+                const res = await fetch(`/api/suporte/visto/${id}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ admin_nome: payload.nome })
+                });
+                if (res.ok) {
+                    carregarMensagens(); // Atualiza a lista na hora
+                }
+            } catch (e) {
+                console.error(e);
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        }
+
+        // Inicia a carga
+        carregarMensagens();
+
+        // 1. Lógica do Menu Hambúrguer (Obrigatório em todas as páginas)
+        const btnMenu = document.getElementById('btnMenu');
+        const linksNav = document.getElementById('linksNav');
+
+        btnMenu?.addEventListener('click', () => {
+            linksNav.classList.toggle('hidden');
+            linksNav.classList.toggle('flex');
+        });
+
+        // 2. Lógica de Segurança (Para os botões de Admin aparecerem)
+        if (token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            if (payload.tipo === 'admin') {
+                // Liga o menu do PC
+                document.getElementById('menuAdminPC')?.classList.remove('hidden');
+                document.getElementById('menuAdminPC')?.classList.add('flex');
+                // Liga o menu do Celular
+                document.getElementById('menuAdminMobile')?.classList.remove('hidden');
+                document.getElementById('menuAdminMobile')?.classList.add('flex');
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

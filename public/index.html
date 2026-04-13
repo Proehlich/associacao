@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Associação de Motoboys</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 h-screen flex items-center justify-center">
+
+    <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h1 class="text-2xl font-bold mb-6 text-center text-blue-600">Associação de Motoboys</h1>
+        <p class="text-gray-600 text-center mb-6">Portal do Associado</p>
+
+        <form id="loginForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700">E-mail</label>
+                <input type="email" id="email" required
+                    class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Senha</label>
+                <input type="password" id="senha" required
+                    class="w-full p-2 border border-gray-300 rounded mt-1 focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+            <button type="submit"
+                class="w-full bg-blue-600 text-white p-2 rounded font-bold hover:bg-blue-700 transition">Entrar</button>
+        </form>
+        <!-- No index.html, logo abaixo do </form> -->
+<div class="mt-6 text-center border-t pt-4">
+    <p class="text-sm text-gray-600">Ainda não é associado?</p>
+    <a href="cadastro.html" class="text-blue-600 font-bold hover:underline">Criar perfil (1º mês grátis!)</a>
+</div>
+
+        <div id="mensagem" class="mt-4 text-center text-sm font-semibold"></div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginForm');
+        const msgDiv = document.getElementById('mensagem');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            msgDiv.innerText = "Verificando...";
+
+            const email = document.getElementById('email').value;
+            const senha = document.getElementById('senha').value;
+
+            // Envia os dados para a API que criamos no server.js
+            const response = await fetch('/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, senha })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                msgDiv.className = "mt-4 text-center text-sm font-semibold text-green-600";
+                msgDiv.innerText = `Bem-vindo, ${data.tipo}! Entrando...`;
+
+                // 1. Salva o "Crachá" no navegador
+                localStorage.setItem('token', data.token);
+
+                // 2. AGORA SIM: Redireciona para o Dashboard após meio segundo
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html';
+                }, 500);
+
+            } else {
+                msgDiv.className = "mt-4 text-center text-sm font-semibold text-red-600";
+                msgDiv.innerText = data.erro;
+            }
+
+        });
+    </script>
+</body>
+
+</html>

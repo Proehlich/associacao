@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Associados</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto relative">
+
+            <!-- --- VERSÃO DESKTOP (PC) --- -->
+            <div class="hidden md:flex items-center justify-between">
+                <!-- Esquerda: Título + Menu -->
+                <div class="flex items-center space-x-4">
+                    <h1 class="font-bold text-xl uppercase tracking-tighter">Associados</h1>
+                    <div id="menuAdminPC" class="hidden items-center space-x-2">
+                        <a href="motoboys.html"
+                            class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👥
+                            Associados</a>
+                        <a href="admin-produtos.html"
+                            class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">➕Produtos</a>
+                        <a href="admin-sac.html"
+                            class="bg-red-700 hover:bg-red-800 px-3 py-1 rounded text-sm font-semibold transition">📩Reclamações</a>
+                    </div>
+                    <a href="loja.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">🛒Loja</a>
+                    <a href="sac.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">💬SAC</a>
+                    <a href="perfil.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👤Perfil</a>
+                </div>
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-2">
+                    <a href="dashboard.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-4 py-1 rounded font-bold text-sm flex items-center gap-1 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        MURAL
+                    </a>
+                    <button onclick="logout()"
+                        class="bg-red-700 hover:bg-red-800 px-4 py-1 rounded text-sm font-black uppercase shadow-sm">Sair</button>
+                </div>
+            </div>
+
+            <!-- --- VERSÃO MOBILE (CELULAR) --- -->
+            <div class="flex md:hidden items-center justify-between">
+                <!-- Esquerda: Hambúrguer -->
+                <button id="btnMenu" class="p-2 bg-blue-700 rounded-lg focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Centro: H1 Centralizado -->
+                <h1 class="absolute left-1/2 -translate-x-1/2 font-bold text-lg uppercase tracking-tighter">Associados
+                </h1>
+
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-1">
+                    <a href="dashboard.html" class="bg-blue-800 p-2 rounded-lg"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg></a>
+                    <button onclick="logout()" class="bg-red-700 p-2 rounded-lg font-black text-xs">SAIR</button>
+                </div>
+            </div>
+            <!-- ABA DO MENU (GAVETA MOBILE) -->
+            <div id="linksNav"
+                class="hidden absolute top-[64px] left-1/2 -translate-x-1/2 w-[90%] bg-blue-600 p-5 shadow-2xl z-50 rounded-b-3xl border-x border-b border-blue-400 flex-col space-y-4 items-center">
+                <div id="menuAdminMobile" class="hidden flex-col space-y-3 w-full">
+                    <a href="motoboys.html"
+                        class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">👥
+                        Associados</a>
+                    <a href="admin-produtos.html"
+                        class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">➕
+                        Produtos</a>
+                    <a href="admin-sac.html"
+                        class="bg-red-700 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">📩
+                        Reclamações</a>
+                </div>
+                <a href="loja.html"
+                    class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">🛒Loja
+                    </a>
+                <a href="sac.html"
+                    class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">💬SAC</a>
+                <a href="perfil.html" class="bg-blue-800 py-3 px-4 rouded-xl text-sm font-bold text-center block w-full">👤Perfil</a>
+            </div>
+        </div>
+    </nav>
+    <main class="p-6 max-w-6xl mx-auto">
+        <h2 class="text-2xl font-bold mb-8 text-gray-800">Lista de Motoboys Associados</h2>
+
+        <div id="gridMotoboys" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Os cards dos motoboys aparecerão aqui -->
+        </div>
+    </main>
+    <footer class="mt-12 border-t py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Associação de Motoboys - Sistema de Apoio ao Associado</p>
+        <div class="mt-2 space-x-4">
+            <a href="politicas.html" class="hover:text-blue-600 underline">Políticas de Privacidade</a>
+            <a href="termos.html" class="hover:text-blue-600 underline">Termos de Uso</a>
+            <span class="text-gray-300">|</span>
+            <span class="font-bold text-blue-500">Status: Mensalidade em dia</span>
+        </div>
+    </footer>
+    <script>
+        // 1. SEGURANÇA E PAYLOAD (Versão que não dá erro no atob)
+        const token = localStorage.getItem('token');
+        if (!token) window.location.href = 'index.html';
+
+        // Função para decodificar o token de forma segura
+        function parseJwt(token) {
+            try {
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                return JSON.parse(window.atob(base64));
+            } catch (e) {
+                return null;
+            }
+        }
+
+        const payload = parseJwt(token);
+
+        // 2. MOSTRAR MENUS ADMIN (PC e MOBILE)
+        if (payload && payload.tipo === 'admin') {
+            // Destrava no PC
+            const menuPC = document.getElementById('menuAdminPC');
+            if (menuPC) {
+                menuPC.classList.remove('hidden');
+                menuPC.classList.add('flex');
+            }
+            // Destrava no Celular (Gaveta)
+            const menuMobile = document.getElementById('menuAdminMobile');
+            if (menuMobile) {
+                menuMobile.classList.remove('hidden');
+                menuMobile.classList.add('flex');
+            }
+        }
+
+        // 3. LÓGICA DO MENU HAMBÚRGUER
+        const btnMenu = document.getElementById('btnMenu');
+        const linksNav = document.getElementById('linksNav');
+        btnMenu?.addEventListener('click', () => {
+            linksNav.classList.toggle('hidden');
+            linksNav.classList.toggle('flex');
+        });
+
+        // 4. FUNÇÃO CARREGAR MOTOBOYS
+        async function carregarMotoboys() {
+            try {
+                const grid = document.getElementById('gridMotoboys');
+                const res = await fetch('/api/usuarios/motoboys');
+                const motoboys = await res.json();
+
+                if (motoboys.length === 0) {
+                    grid.innerHTML = '<p class="text-gray-500 text-center col-span-3">Nenhum motoboy cadastrado.</p>';
+                    return;
+                }
+
+                grid.innerHTML = motoboys.map(moto => {
+                    const botaoExcluir = (payload && payload.tipo === 'admin')
+                        ? `<button onclick="excluirMembro(${moto.id}, '${moto.nome}')" class="absolute top-2 right-2 bg-red-100 text-red-600 p-1.5 rounded-full hover:bg-red-600 hover:text-white transition shadow-sm z-10">
+                        <svg xmlns="http://w3.org" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                       </button>`
+                        : '';
+
+                    return `
+                <div class="relative bg-white p-6 rounded-xl shadow-md border-t-4 ${moto.moto_status === 'regular' ? 'border-green-500' : 'border-red-500'}">
+                    ${botaoExcluir}
+<img src="/uploads/${moto.foto_perfil}" 
+     onerror="this.onerror=null; this.src='padrao.png'" 
+     class="w-24 h-24 rounded-full mx-auto mb-4 object-cover border-4 border-gray-100 shadow">
+
+                    <h3 class="text-center font-bold text-lg uppercase">${moto.nome}</h3>
+                    <p class="text-center text-gray-500 text-xs mb-4 italic">Placa: ${moto.placa_moto}</p>
+                    
+                    <div class="space-y-2 border-t pt-4">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">CNH:</span>
+                            <span class="font-bold ${moto.cnh_status === 'regular' ? 'text-green-600' : 'text-red-600'}">${moto.cnh_status.toUpperCase()}</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">MOTO:</span>
+                            <span class="font-bold ${moto.moto_status === 'regular' ? 'text-green-600' : 'text-red-600'}">${moto.moto_status.toUpperCase()}</span>
+                        </div>
+                    </div>
+                </div>`;
+                }).join('');
+            } catch (erro) {
+                console.error("Erro ao carregar:", erro);
+            }
+        }
+
+        // 5. FUNÇÃO EXCLUIR
+        async function excluirMembro(id, nome) {
+            if (!confirm(`⚠️ Deseja remover ${nome} da associação?`)) return;
+            try {
+                const res = await fetch(`/api/usuarios/excluir/${id}`, { method: 'POST' });
+                if (res.ok) {
+                    alert("Membro removido!");
+                    carregarMotoboys();
+                }
+            } catch (e) { console.error(e); }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        }
+
+        carregarMotoboys();
+    </script>
+</body>
+
+</html>

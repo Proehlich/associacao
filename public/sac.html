@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 min-h-screen flex flex-col">
+    <nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto relative">
+
+            <!-- --- VERSÃO DESKTOP (PC) --- -->
+            <div class="hidden md:flex items-center justify-between">
+                <!-- Esquerda: Título + Menu -->
+                <div class="flex items-center space-x-4">
+                    <h1 class="font-bold text-xl uppercase tracking-tighter">SAC</h1>
+                    <div id="menuAdminPC" class="hidden items-center space-x-2">
+                        <a href="motoboys.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👥Associados</a>
+                        <a href="admin-produtos.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">➕Produtos</a>
+                        <a href="admin-sac.html" class="bg-red-700 hover:bg-red-800 px-3 py-1 rounded text-sm font-semibold transition">📩Reclamações</a>
+                    </div>
+                    <a href="loja.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">🛒Loja</a>
+                    <a href="sac.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">💬SAC</a>
+                    <a href="perfil.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👤Perfil</a>
+                </div>
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-2">
+                    <a href="dashboard.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-4 py-1 rounded font-bold text-sm flex items-center gap-1 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        MURAL
+                    </a>
+                    <button onclick="logout()"
+                        class="bg-red-700 hover:bg-red-800 px-4 py-1 rounded text-sm font-black uppercase shadow-sm">Sair</button>
+                </div>
+            </div>
+
+            <!-- --- VERSÃO MOBILE (CELULAR) --- -->
+            <div class="flex md:hidden items-center justify-between">
+                <!-- Esquerda: Hambúrguer -->
+                <button id="btnMenu" class="p-2 bg-blue-700 rounded-lg focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Centro: H1 Centralizado -->
+                <h1 class="absolute left-1/2 -translate-x-1/2 font-bold text-lg uppercase tracking-tighter">SAC
+                </h1>
+
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-1">
+                    <a href="dashboard.html" class="bg-blue-800 p-2 rounded-lg"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg></a>
+                    <button onclick="logout()" class="bg-red-700 p-2 rounded-lg font-black text-xs">SAIR</button>
+                </div>
+            </div>
+
+            <!-- ABA DO MENU (GAVETA MOBILE) -->
+            <div id="linksNav"
+                class="hidden absolute top-[64px] left-1/2 -translate-x-1/2 w-[90%] bg-blue-600 p-5 shadow-2xl z-50 rounded-b-3xl border-x border-b border-blue-400 flex-col space-y-4 items-center">
+                <div id="menuAdminMobile" class="hidden flex-col space-y-3 w-full">
+                    <a href="motoboys.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">👥Associados</a>
+                    <a href="admin-produtos.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">➕Produtos</a>
+                    <a href="admin-sac.html" class="bg-red-700 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">📩Reclamações</a>
+                </div>
+                <a href="loja.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">🛒Associados</a>
+                <a href="sac.html" class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">💬SAC</a>
+                <a href="perfil.html" class="bg-blue-800 py-3 px-4 rouded-xl text-sm font-bold text-center block w-full">👤Meu Perfil</a>
+            </div>
+        </div>
+    </nav>
+    <main class="flex-grow flex items-center justify-center p-6">
+        <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-xl border-t-4 border-blue-500">
+            <h2 class="text-xl font-bold mb-4">Envie sua Sugestão ou Reclamação</h2>
+            <p class="text-gray-500 text-sm mb-6">Sua mensagem será lida pela diretoria da associação.</p>
+
+            <form id="sacForm" class="space-y-4">
+                <textarea id="mensagem" placeholder="Descreva aqui o que aconteceu ou sua sugestão..." required
+                    class="w-full p-3 border rounded-lg h-40 focus:outline-blue-500"></textarea>
+                <button type="submit"
+                    class="w-full bg-blue-600 text-white p-3 rounded-lg font-bold hover:bg-blue-700 transition">
+                    Enviar para Diretoria
+                </button>
+            </form>
+        </div>
+    </main>
+    <footer class="mt-12 border-t py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Associação de Motoboys - Sistema de Apoio ao Associado</p>
+        <div class="mt-2 space-x-4">
+            <a href="politicas.html" class="hover:text-blue-600 underline">Políticas de Privacidade</a>
+            <a href="termos.html" class="hover:text-blue-600 underline">Termos de Uso</a>
+            <span class="text-gray-300">|</span>
+            <span class="font-bold text-blue-500">Status: Mensalidade em dia</span>
+        </div>
+    </footer>
+    <script>
+        // 1. SEGURANÇA E IDENTIFICAÇÃO (Roda assim que abre a página)
+        const token = localStorage.getItem('token');
+        if (!token) {
+            window.location.href = 'index.html';
+        }
+
+        const payload = JSON.parse(atob(token.split('.')[1]));
+
+        // 2. MOSTRAR MENU SE FOR ADMIN (Roda assim que abre a página)
+        if (payload.tipo === 'admin') {
+            const divAdmin = document.getElementById('menuAdmin');
+            if (divAdmin) {
+                divAdmin.classList.remove('hidden');
+                divAdmin.classList.add('flex');
+            }
+        }
+
+        // 3. ENVIO DO FORMULÁRIO (Apenas quando clicar no botão)
+        document.getElementById('sacForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const res = await fetch('/api/suporte', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    nome: payload.nome,
+                    mensagem: document.getElementById('mensagem').value
+                })
+            });
+
+            if (res.ok) {
+                alert("✅ Mensagem enviada! Obrigado por colaborar.");
+                window.location.href = 'dashboard.html';
+            } else {
+                alert("❌ Erro ao enviar. Tente novamente.");
+            }
+        };
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        }
+
+        // 1. Lógica do Menu Hambúrguer (Obrigatório em todas as páginas)
+        const btnMenu = document.getElementById('btnMenu');
+        const linksNav = document.getElementById('linksNav');
+
+        btnMenu?.addEventListener('click', () => {
+            linksNav.classList.toggle('hidden');
+            linksNav.classList.toggle('flex');
+        });
+
+        // 2. Lógica de Segurança (Para os botões de Admin aparecerem)
+        if (token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            if (payload.tipo === 'admin') {
+                // Liga o menu do PC
+                document.getElementById('menuAdminPC')?.classList.remove('hidden');
+                document.getElementById('menuAdminPC')?.classList.add('flex');
+                // Liga o menu do Celular
+                document.getElementById('menuAdminMobile')?.classList.remove('hidden');
+                document.getElementById('menuAdminMobile')?.classList.add('flex');
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>

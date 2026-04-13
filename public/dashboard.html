@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mural</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+    <nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto relative">
+
+            <!-- --- VERSÃO DESKTOP (PC) --- -->
+            <div class="hidden md:flex items-center justify-between">
+                <!-- Esquerda: Título + Menu -->
+                <div class="flex items-center space-x-4">
+                    <h1 class="font-bold text-xl uppercase tracking-tighter">Mural</h1>
+                    <div id="menuAdminPC" class="hidden items-center space-x-2">
+                        <a href="motoboys.html"
+                            class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👥
+                            Associados</a>
+                        <a href="admin-produtos.html"
+                            class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">➕
+                            Adicionar Produtos</a>
+                        <a href="admin-sac.html"
+                            class="bg-red-700 hover:bg-red-800 px-3 py-1 rounded text-sm font-semibold transition">📩
+                            Reclamações</a>
+                    </div>
+                    <a href="loja.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">🛒
+                        Loja dos Associados</a>
+                    <a href="sac.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">💬
+                        SAC</a>
+                    <a href="perfil.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👤 Meu
+                        Perfil</a>
+                </div>
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-2">
+                    <a href="dashboard.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-4 py-1 rounded font-bold text-sm flex items-center gap-1 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        MURAL
+                    </a>
+                    <button onclick="logout()"
+                        class="bg-red-700 hover:bg-red-800 px-4 py-1 rounded text-sm font-black uppercase shadow-sm">Sair</button>
+                </div>
+            </div>
+
+            <!-- --- VERSÃO MOBILE (CELULAR) --- -->
+            <div class="flex md:hidden items-center justify-between">
+                <!-- Esquerda: Hambúrguer -->
+                <button id="btnMenu" class="p-2 bg-blue-700 rounded-lg focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Centro: H1 Centralizado -->
+                <h1 class="absolute left-1/2 -translate-x-1/2 font-bold text-lg uppercase tracking-tighter">Mural
+                </h1>
+
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-1">
+                    <a href="dashboard.html" class="bg-blue-800 p-2 rounded-lg"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg></a>
+                    <button onclick="logout()" class="bg-red-700 p-2 rounded-lg font-black text-xs">SAIR</button>
+                </div>
+            </div>
+
+            <!-- ABA DO MENU (GAVETA MOBILE) -->
+            <div id="linksNav"
+                class="hidden absolute top-[64px] left-1/2 -translate-x-1/2 w-[90%] bg-blue-600 p-5 shadow-2xl z-50 rounded-b-3xl border-x border-b border-blue-400 flex-col space-y-4 items-center">
+                <div id="menuAdminMobile" class="hidden flex-col space-y-3 w-full">
+                    <a href="motoboys.html"
+                        class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">👥Associados</a>
+                    <a href="admin-produtos.html"
+                        class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">➕Produtos</a>
+                    <a href="admin-sac.html"
+                        class="bg-red-700 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">📩Reclamações</a>
+                </div>
+                <a href="loja.html"
+                    class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">🛒Loja</a>
+                <a href="sac.html"
+                    class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">💬SAC</a>
+                <a href="perfil.html"
+                    class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">👤Perfil</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="p-6 max-w-4xl mx-auto">
+        <!-- Banners de Publicidade (Espaço dos Parceiros) -->
+        <div class="relative w-full h-48 md:h-64 overflow-hidden rounded-xl shadow-lg mb-8 bg-gray-200">
+            <div id="slider" class="flex transition-transform duration-700 ease-in-out h-full">
+                <!-- O JavaScript vai injetar as fotos aqui -->
+            </div>
+        </div>
+        <!-- 1. FORMULÁRIO PREENCHIDO -->
+        <div id="areaPostagem" class="hidden bg-white p-6 rounded-lg shadow-md mb-8 border-t-4 border-blue-500">
+            <h3 class="font-bold text-lg mb-4 text-gray-700">Postar Nova Vaga</h3>
+            <!-- Procure este trecho no seu dashboard.html -->
+            <form id="vagaForm" class="space-y-4">
+                <input type="text" id="vagaTitulo" placeholder="NOME: (Ex: Pizzaria do Fulano)" required
+                    class="w-full p-3 border rounded-xl font-bold">
+                <input type="text" id="vagaLocal" placeholder="LOCAL: (Ex: Rua da Pizzaria, 123)" required
+                    class="w-full p-3 border rounded-xl">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="number" id="vagaArrancada" min="60" value="60" required
+                        class="w-full p-3 border rounded-xl font-black text-green-600">
+                    <input type="number" id="vagaTaxa" min="6" value="6" required
+                        class="w-full p-3 border rounded-xl font-black text-green-600">
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="time" id="horarioInicio" required class="w-full p-3 border rounded-xl font-bold">
+                    <input type="time" id="horarioFim" required class="w-full p-3 border rounded-xl font-bold">
+                </div>
+
+                <!-- No seu formulário dentro do dashboard.html -->
+                <div>
+                    <label class="text-[10px] font-black text-gray-400 uppercase">O motoboy precisa levar Bag
+                        própria?</label>
+                    <select id="vagaBag" required
+                        class="w-full p-3 border rounded-xl font-bold bg-white focus:outline-blue-500">
+                        <option value="Sim">Sim, precisa de Bag</option>
+                        <option value="Não">Não, o estabelecimento fornece ou não precisa</option>
+                    </select>
+                </div>
+
+                <textarea id="vagaDesc" placeholder="Descrição (Opcional)"
+                    class="w-full p-3 border rounded-xl h-20 text-sm"></textarea>
+
+                <button type="submit"
+                    class="bg-blue-600 text-white px-6 py-4 rounded-2xl font-black w-full shadow-lg uppercase text-lg">Publicar
+                    Vaga</button>
+            </form>
+
+        </div>
+        <h2 class="text-2xl font-bold text-gray-800 mb-6 border-b-4 border-blue-600 inline-block">Vagas Disponíveis
+        </h2>
+
+        <div id="muralVagas" class="grid gap-4">
+            <!-- As vagas aparecerão aqui -->
+        </div>
+    </main>
+    <footer class="mt-12 border-t py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Associação de Motoboys - Sistema de Apoio ao Associado</p>
+        <div class="mt-2 space-x-4">
+            <a href="politicas.html" class="hover:text-blue-600 underline">Políticas de Privacidade</a>
+            <a href="termos.html" class="hover:text-blue-600 underline">Termos de Uso</a>
+            <span class="text-gray-300">|</span>
+            <span class="font-bold text-blue-500">Status: Mensalidade em dia</span>
+        </div>
+    </footer>
+
+    <script>
+        const token = localStorage.getItem('token');
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        console.log("Meu ID logado é:", payload.id);
+
+        // 2. MENU HAMBÚRGUER (Protegido contra erros)
+        const btnMenu = document.getElementById('btnMenu');
+        const linksNav = document.getElementById('linksNav');
+        btnMenu?.addEventListener('click', () => {
+            linksNav.classList.toggle('hidden');
+            linksNav.classList.toggle('flex');
+        });
+
+        // 3. BANNERS
+        async function carregarBanners() {
+            const slider = document.getElementById('slider');
+            if (!slider) return;
+            try {
+                const res = await fetch('/api/publicidade/banners');
+                const parceiros = await res.json();
+                if (parceiros.length === 0) {
+                    slider.innerHTML = `<div class="min-w-full flex items-center justify-center bg-gray-200 h-full font-bold">Anuncie aqui!</div>`;
+                    return;
+                }
+                slider.innerHTML = parceiros.map(p => `
+                <div class="min-w-full h-full relative">
+                    <img src="/uploads/${p.foto_perfil}" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 bg-black/60 w-full p-2 text-white text-center font-bold text-xs uppercase">Parceiro: ${p.nome}</div>
+                </div>
+            `).join('');
+                iniciarGiro(parceiros.length);
+            } catch (erro) { console.error(erro); }
+        }
+
+        function iniciarGiro(total) {
+            let bannerIndex = 0;
+            const slider = document.getElementById('slider');
+            setInterval(() => {
+                bannerIndex = (bannerIndex + 1) % total;
+                if (slider) slider.style.transform = `translateX(${-bannerIndex * 100}%)`;
+            }, 5000);
+        }
+
+        // 4. MURAL DE VAGAS
+        async function carregarVagas() {
+            const mural = document.getElementById('muralVagas');
+            const res = await fetch('/api/vagas');
+            const vagas = await res.json();
+
+            mural.innerHTML = vagas.map(v => {
+                let acaoHTML = '';
+                const msgZap = encodeURIComponent(`Olá! Sou o motoboy ${payload.nome}, aceitei sua vaga no Mural da Associação e estou a caminho!`);
+
+                // 1. LÓGICA DO BOTÃO (WHATSAPP OU STATUS)
+                if (v.motoboy_id) {
+                    if (v.motoboy_id === payload.id) {
+                        // VOCÊ ACEITOU: MOSTRA O ZAP
+                        acaoHTML = `
+                <div class="flex flex-col gap-1 items-end w-full">
+                    <span class="text-[10px] font-bold text-green-600 uppercase italic">✅ Você aceitou</span>
+                    <a href="https://wa.me{v.contato}?text=${msgZap}" target="_blank" 
+                       class="bg-[#25D366] text-white px-4 py-3 rounded-xl font-bold flex items-center justify-center gap-2 shadow-lg w-full">
+                       <svg style="width:20px; height:20px" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.23 8.23 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.22 8.25-8.22M8.53 7.33c-.16 0-.43.06-.66.31-.22.25-.87.86-.87 2.07 0 1.22.89 2.39 1 2.56.14.17 1.76 2.68 4.25 3.75.59.26 1.05.41 1.41.52.6.19 1.15.16 1.57.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.16-.48-.28-.25-.13-1.47-.73-1.69-.81-.23-.08-.39-.12-.56.13-.17.25-.64.81-.78.98-.14.17-.29.19-.54.06-.25-.13-1.03-.38-1.97-1.21-.73-.65-1.23-1.45-1.37-1.7-.14-.25-.01-.39.12-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.11-.56-1.35-.77-1.85-.2-.51-.4-.44-.56-.45-.14-.01-.31-.01-.47-.01Z" /></svg>
+                       WHATSAPP
+                    </a>
+                </div>`;
+                    } else {
+                        // OUTRO ACEITOU
+                        acaoHTML = `<div class="flex flex-col items-end"><span class="text-[10px] font-bold text-gray-400 uppercase">Ocupada por:</span><span class="text-sm font-black text-gray-700 uppercase">${v.nome_motoboy}</span></div>`;
+                    }
+                } else {
+                    // VAGA LIVRE
+                    if (payload.tipo === 'motoboy' || payload.tipo === 'admin') {
+                        acaoHTML = `<button onclick="aceitarVaga(${v.id})" class="w-full bg-green-600 text-white px-6 py-3 rounded-xl font-black shadow-md uppercase text-sm">Aceitar Vaga</button>`;
+                    } else {
+                        acaoHTML = `<span class="text-blue-500 text-xs italic font-bold uppercase tracking-tighter">📢 Aguardando Motoboy...</span>`;
+                    }
+                }
+
+                // 2. LÓGICA DAS CORES DA BAG
+                const badgeBag = v.precisa_bag === 'Sim'
+                    ? `<span class="bg-red-100 text-red-700 text-[10px] font-black px-2 py-1 rounded uppercase border border-red-200 tracking-tighter">⚠️ PRECISA DE BAG</span>`
+                    : `<span class="bg-green-100 text-green-700 text-[10px] font-black px-2 py-1 rounded uppercase border border-green-200 tracking-tighter">✅ NÃO PRECISA DE BAG</span>`;
+
+                // 3. RETORNO DO HTML (CARD COMPLETO)
+                return `
+        <div class="bg-white p-5 rounded-3xl shadow-xl border-l-[12px] ${v.motoboy_id ? 'border-gray-300 opacity-80' : 'border-green-500'} mb-6">
+            <div class="flex flex-col md:flex-row justify-between gap-4 text-left">
+                <div class="flex-grow">
+                    <div class="flex flex-wrap items-center gap-2 mb-2">
+                        <span class="bg-blue-100 text-blue-700 text-[10px] font-black px-2 py-1 rounded uppercase tracking-tighter font-mono">🕒 ${v.horario_inicio || '--:--'} às ${v.horario_fim || '--:--'}</span>
+                        ${badgeBag}
+                    </div>
+                    
+                    <h3 class="font-black text-2xl text-blue-900 uppercase leading-none mb-1">${v.titulo}</h3>
+                    <p class="text-gray-600 font-bold text-sm mb-2 italic">📍 ${v.local || 'Local não informado'}</p>
+                    
+                    ${v.descricao ? `<p class="text-gray-500 text-xs italic mb-4 leading-relaxed">"${v.descricao}"</p>` : ''}
+                    
+                    <div class="flex gap-4 border-t pt-4">
+                        <div>
+                            <span class="text-[10px] block text-gray-400 font-bold uppercase tracking-widest">Diária</span>
+                            <span class="font-black text-green-600 text-xl">R$ ${v.arrancada ? Number(v.arrancada).toFixed(2) : '60.00'}</span>
+                        </div>
+                        <div>
+                            <span class="text-[10px] block text-gray-400 font-bold uppercase tracking-widest">Taxa</span>
+                            <span class="font-black text-green-600 text-xl">R$ ${v.taxa_minima ? Number(v.taxa_minima).toFixed(2) : '6.00'}</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-center justify-center min-w-[200px] bg-gray-50 p-4 rounded-2xl border border-gray-100">
+                    <div class="w-full text-center">
+                        ${acaoHTML}
+                    </div>
+                </div>
+            </div>
+        </div>`;
+            }).join('');
+        }
+
+
+        // 5. ACEITAR VAGA
+        async function aceitarVaga(vagaId) {
+            if (!confirm("Deseja aceitar esta entrega?")) return;
+            const res = await fetch(`/api/vagas/${vagaId}/aceitar`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ motoboy_id: payload.id, nome_motoboy: payload.nome })
+            });
+            if (res.ok) { carregarVagas(); }
+        }
+
+        // 6. POSTAR VAGA
+        document.getElementById('vagaForm')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const dados = {
+                titulo: document.getElementById('vagaTitulo').value,
+                local: document.getElementById('vagaLocal').value,
+                arrancada: document.getElementById('vagaArrancada').value,
+                taxa_minima: document.getElementById('vagaTaxa').value,
+                horario_inicio: document.getElementById('horarioInicio').value,
+                horario_fim: document.getElementById('horarioFim').value,
+                precisa_bag: document.getElementById('vagaBag').value,
+                descricao: document.getElementById('vagaDesc').value,
+                restaurante_id: payload.id
+            };
+
+            // ... restante do fetch
+
+            try {
+                const res = await fetch('/api/vagas', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(dados)
+                });
+
+                if (res.ok) {
+                    alert("✅ Diária publicada com sucesso!");
+                    e.target.reset();
+                    carregarVagas(); // Atualiza o mural na hora
+                } else {
+                    const erro = await res.json();
+                    alert("❌ Erro ao publicar: " + (erro.erro || "Verifique os valores"));
+                }
+            } catch (err) {
+                alert("❌ Erro de conexão com o servidor.");
+            }
+        });
+
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        }
+
+        window.addEventListener('load', () => {
+            carregarVagas();
+            carregarBanners();
+
+            // 1. Verifica se o usuário é ADMIN
+            if (payload.tipo === 'admin') {
+                // MOSTRA A ÁREA DE POSTAGEM (O que estava faltando)
+                const area = document.getElementById('areaPostagem');
+                if (area) {
+                    area.classList.remove('hidden');
+                }
+
+                // MOSTRA OS MENUS DA BARRA (PC e Mobile)
+                const menuPC = document.getElementById('menuAdminPC');
+                if (menuPC) {
+                    menuPC.classList.remove('hidden');
+                    menuPC.classList.add('flex');
+                }
+
+                const menuMobile = document.getElementById('menuAdminMobile');
+                if (menuMobile) {
+                    menuMobile.classList.remove('hidden');
+                    menuMobile.classList.add('flex');
+                }
+            }
+        });
+
+    </script>
+
+
+</body>
+
+</html>

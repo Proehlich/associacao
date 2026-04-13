@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+    <nav class="bg-blue-600 p-4 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto relative">
+
+            <!-- --- VERSÃO DESKTOP (PC) --- -->
+            <div class="hidden md:flex items-center justify-between">
+                <!-- Esquerda: Título + Menu -->
+                <div class="flex items-center space-x-4">
+                    <h1 class="font-bold text-xl uppercase tracking-tighter">Políticas de Privacidade</h1>
+                    <div id="menuAdminPC" class="hidden items-center space-x-2">
+                        <a href="motoboys.html"
+                            class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👥
+                            Associados</a>
+                        <a href="admin-produtos.html"
+                            class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">➕
+                            Produtos</a>
+                        <a href="admin-sac.html"
+                            class="bg-red-700 hover:bg-red-800 px-3 py-1 rounded text-sm font-semibold transition">📩
+                            Reclamações</a>
+                    </div>
+                    <a href="loja.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">🛒
+                        Loja</a>
+                    <a href="sac.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">💬                        SAC</a>
+                    <a href="perfil.html" class="bg-blue-800 hover:bg-blue-900 px-3 py-1 rounded text-sm font-semibold transition">👤Perfil</a>
+                </div>
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-2">
+                    <a href="dashboard.html"
+                        class="bg-blue-800 hover:bg-blue-900 px-4 py-1 rounded font-bold text-sm flex items-center gap-1 shadow-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                        MURAL
+                    </a>
+                    <button onclick="logout()"
+                        class="bg-red-700 hover:bg-red-800 px-4 py-1 rounded text-sm font-black uppercase shadow-sm">Sair</button>
+                </div>
+            </div>
+
+            <!-- --- VERSÃO MOBILE (CELULAR) --- -->
+            <div class="flex md:hidden items-center justify-between">
+                <!-- Esquerda: Hambúrguer -->
+                <button id="btnMenu" class="p-2 bg-blue-700 rounded-lg focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+
+                <!-- Centro: H1 Centralizado -->
+                <h1 class="absolute left-1/2 -translate-x-1/2 font-bold text-lg uppercase tracking-tighter">Políticas de privacidade
+                </h1>
+
+                <!-- Direita: Mural + Sair -->
+                <div class="flex items-center space-x-1">
+                    <a href="dashboard.html" class="bg-blue-800 p-2 rounded-lg"><svg class="w-5 h-5" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg></a>
+                    <button onclick="logout()" class="bg-red-700 p-2 rounded-lg font-black text-xs">SAIR</button>
+                </div>
+            </div>
+            <!-- ABA DO MENU (GAVETA MOBILE) -->
+            <div id="linksNav"
+                class="hidden absolute top-[64px] left-1/2 -translate-x-1/2 w-[90%] bg-blue-600 p-5 shadow-2xl z-50 rounded-b-3xl border-x border-b border-blue-400 flex-col space-y-4 items-center">
+                <div id="menuAdminMobile" class="hidden flex-col space-y-3 w-full">
+                    <a href="motoboys.html"
+                        class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">👥
+                        Associados</a>
+                    <a href="admin-produtos.html"
+                        class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">➕
+                        Adicionar Produtos</a>
+                    <a href="admin-sac.html"
+                        class="bg-red-700 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">📩
+                        Reclamações</a>
+                </div>
+                <a href="loja.html"
+                    class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">🛒 Loja dos
+                    Associados</a>
+                <a href="sac.html"
+                    class="bg-blue-800 py-3 px-4 rounded-xl text-sm font-bold text-center block w-full">💬 SAC</a>
+                <a href="perfil.html" class="bg-blue-800 py-3 px-4 rouded-xl text-sm font-bold text-center block w-full">👤 Meu Perfil</a>
+            </div>
+        </div>
+    </nav>
+    <main class="max-w-4xl mx-auto p-8 bg-white my-10 shadow-lg rounded-xl leading-relaxed">
+        <h2 class="text-3xl font-black text-blue-600 mb-6 uppercase">Transparência com seus Dados</h2>
+
+        <section class="space-y-6">
+            <div>
+                <h3 class="font-bold text-lg text-gray-700">1. Coleta de Informações</h3>
+                <p>Para garantir a segurança da nossa rede de apoio, coletamos dados de identificação (Nome, CPF, CNH),
+                    fotos de perfil e dados do veículo (Placa). Essas informações são essenciais para validar quem faz
+                    parte da associação.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-lg text-gray-700">2. Uso dos Dados</h3>
+                <p>Seus dados são usados exclusivamente para:</p>
+                <ul class="list-disc ml-6 mt-2 text-gray-600">
+                    <li>Validar sua regularidade perante os órgãos de trânsito.</li>
+                    <li>Permitir o acesso ao mural de vagas e loja de benefícios.</li>
+                    <li>Garantir a segurança em casos de suporte e reclamações (SAC).</li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-lg text-gray-700">3. Compartilhamento e Proteção</h3>
+                <p>Nós <strong>não vendemos</strong> seus dados. Fotos de CNH e documentos são de acesso restrito da
+                    diretoria técnica. Apenas seu Nome e Placa podem ser visualizados por outros membros no Mural de
+                    Vagas para fins de identificação da entrega.</p>
+            </div>
+
+            <div>
+                <h3 class="font-bold text-lg text-gray-700">4. Seus Direitos</h3>
+                <p>Você pode solicitar a exclusão total dos seus dados a qualquer momento ao sair da associação. Todas
+                    as fotos enviadas serão deletadas permanentemente dos nossos servidores.</p>
+            </div>
+
+            <div class="bg-blue-50 p-4 border-l-4 border-blue-500 italic text-sm">
+                Ao utilizar este sistema, você concorda que realizaremos consultas periódicas (a cada 6 meses) via API
+                para garantir que sua documentação continua em dia, protegendo assim toda a categoria.
+            </div>
+        </section>
+    </main>
+    <footer class="mt-12 border-t py-6 text-center text-gray-500 text-sm">
+        <p>&copy; 2024 Associação de Motoboys - Sistema de Apoio ao Associado</p>
+        <div class="mt-2 space-x-4">
+            <a href="politicas.html" class="hover:text-blue-600 underline">Políticas de Privacidade</a>
+            <a href="termos.html" class="hover:text-blue-600 underline">Termos de Uso</a>
+            <span class="text-gray-300">|</span>
+            <span class="font-bold text-blue-500">Status: Mensalidade em dia</span>
+        </div>
+    </footer>
+    <script>
+        // 1. SEGURANÇA: Lê o Token e valida Admin
+        const token = localStorage.getItem('token');
+        if (token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+
+            // Se for admin, libera os botões na barra azul
+            if (payload.tipo === 'admin') {
+                const menuAdmin = document.getElementById('menuAdmin');
+                if (menuAdmin) {
+                    menuAdmin.classList.remove('hidden');
+                    menuAdmin.classList.add('flex');
+                }
+            }
+        }
+
+        function logout() {
+            localStorage.removeItem('token');
+            window.location.href = 'index.html';
+        }
+
+        // 1. Lógica do Menu Hambúrguer (Obrigatório em todas as páginas)
+        const btnMenu = document.getElementById('btnMenu');
+        const linksNav = document.getElementById('linksNav');
+
+        btnMenu?.addEventListener('click', () => {
+            linksNav.classList.toggle('hidden');
+            linksNav.classList.toggle('flex');
+        });
+
+        // 2. Lógica de Segurança (Para os botões de Admin aparecerem)
+        if (token) {
+            const payload = JSON.parse(atob(token.split('.')[1]));
+            if (payload.tipo === 'admin') {
+                // Liga o menu do PC
+                document.getElementById('menuAdminPC')?.classList.remove('hidden');
+                document.getElementById('menuAdminPC')?.classList.add('flex');
+                // Liga o menu do Celular
+                document.getElementById('menuAdminMobile')?.classList.remove('hidden');
+                document.getElementById('menuAdminMobile')?.classList.add('flex');
+            }
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
